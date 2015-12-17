@@ -1,4 +1,10 @@
 # shrew-reconnect
+Manages Shrew Soft VPN client and connection. Reconnects when the connection is dropped.
+######Download installer from: http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest.msi
+
+![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/open.png)
+![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/connected.PNG)
+
 #### What shrew-reconnect is
 shrew-reconnect manages a Shrew Soft VPN client on windows (https://www.shrew.net/download/vpn) and the VPN connection which it creates. It will monitor the connection and try to reconnect if the connection drops. It also hides the Shrew Soft VPN client window and minimizes itself to the tray for a less intrusive VPNing experience. shrew-reconnect was built to avoid having to reconnect the Shrew Soft VPN client manually each time the connection drops.
 

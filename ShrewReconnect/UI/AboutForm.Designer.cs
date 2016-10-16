@@ -101,9 +101,9 @@
             this.getLatestLink.ForeColor = System.Drawing.Color.Blue;
             this.getLatestLink.Location = new System.Drawing.Point(140, 65);
             this.getLatestLink.Name = "getLatestLink";
-            this.getLatestLink.Size = new System.Drawing.Size(367, 13);
+            this.getLatestLink.Size = new System.Drawing.Size(145, 13);
             this.getLatestLink.TabIndex = 5;
-            this.getLatestLink.Text = "http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest.msi";
+            this.getLatestLink.Text = "http://www.waldron.co.za/...";
             this.getLatestLink.Click += new System.EventHandler(this.getLatestLink_Click);
             // 
             // AboutForm

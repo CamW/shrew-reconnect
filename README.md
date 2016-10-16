@@ -1,6 +1,6 @@
 # shrew-reconnect
 Manages Shrew Soft VPN client and connection. Reconnects when the connection is dropped.
-######Download installer from: http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest.msi
+######Download installer from: http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi
 
 ![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/open.png)
 ![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/connected.PNG)
@@ -15,6 +15,7 @@ shrew-reconnect is not a stand alone VPN client. You need the original Shrew Sof
 * Watches Shrew Soft VPN and reconnects when connection is dropped.
 * Ensures that Shrew Soft VPN services are running before trying to connect.
 * Securely stores connection information using Microsoft DPAPI to prevent having to specify it each time you connect.
+* Allows you to automatically connect to a VPN on application startup.
 * Allows you to hide/show the Shrew Soft VPN client window to reduce desktop clutter.
 * Minimizes to a tray icon (double click the icon to re-open)
 * Tray icon shows the VPN status with different icon background colors.
@@ -31,7 +32,7 @@ shrew-reconnect is not a stand alone VPN client. You need the original Shrew Sof
 
 #### Using shrew-reconnect
 #####Installation
-There is a prebuilt MSI installer available from http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest.msi. or you can download the source, build it, build the MSI and install that.
+There is a prebuilt MSI installer available from http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi (64-bit) or http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest32.msi (32-bit). or you can download the source, build it, build the MSI and install that.
 
 #####Running
 Once installed, there will be a "Shrew VPN Reconnect" icon on your desktop. Double click that to open. You'll notice, if you have UAC enabled, that it required administrative privileges. This is because it checks to see that the Shrew Soft VPN windows services are running and starts them if they are not. It will also restart them after 10 failed connect attempts as they do seem to get stuck in bad states from time to time.

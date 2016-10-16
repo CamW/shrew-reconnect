@@ -47,7 +47,7 @@ namespace com.waldron.shrewReconnect
         internal static bool StartService(string daemonName)
         {
             ServiceController sc = new ServiceController(daemonName);
-            ShrewNotifier.Log(string.Format("    Starting daemon...", daemonName), ShrewConnectionStatus.Pending);
+            ShrewNotifier.Log("    Starting daemon...", ShrewConnectionStatus.Pending);
             sc.Start();
             try
             {
@@ -55,10 +55,10 @@ namespace com.waldron.shrewReconnect
             }
             catch (Exception)
             {
-                ShrewNotifier.Log(string.Format("    Unable to start daemon.", daemonName), ShrewConnectionStatus.Disconnected);
+                ShrewNotifier.Log("    Unable to start daemon.", ShrewConnectionStatus.Disconnected);
                 return false;
             }
-            ShrewNotifier.Log(string.Format("    Daemon running.", daemonName), ShrewConnectionStatus.Pending);
+            ShrewNotifier.Log("    Daemon running.", ShrewConnectionStatus.Pending);
             return true;
         }
 
@@ -76,10 +76,10 @@ namespace com.waldron.shrewReconnect
             }
             catch (Exception)
             {
-                ShrewNotifier.Log(string.Format("    Unable to restart daemon.", daemonName), ShrewConnectionStatus.Disconnected);
+                ShrewNotifier.Log("    Unable to restart daemon.", ShrewConnectionStatus.Disconnected);
                 return false;
             }
-            ShrewNotifier.Log(string.Format("    Daemon running.", daemonName), ShrewConnectionStatus.Pending);
+            ShrewNotifier.Log("    Daemon running.", ShrewConnectionStatus.Pending);
             return true;
         }
     }

@@ -1,17 +1,7 @@
 ﻿using com.waldron.shrewReconnect.Shrew;
 using com.waldron.shrewReconnect.Util;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace com.waldron.shrewReconnect
@@ -40,7 +30,13 @@ namespace com.waldron.shrewReconnect
                 this.usernameTextBox.Text = credentials.username;
                 this.passwordTextBox.Text = credentials.password;
                 this.siteConfigTextBox.Text = credentials.siteConfigPath;
+                this.checkboxConnectOnStart.Checked = credentials.connectOnStart;
                 this.checkBoxSave.Checked = true;
+                if (this.checkboxConnectOnStart.Checked)
+                {
+                    connect();
+                    this.WindowState = FormWindowState.Minimized;
+                }
             }
             else
             {
@@ -50,12 +46,16 @@ namespace com.waldron.shrewReconnect
 
         private void updates_UpdateAvailable(object o, UpdateAvailableArgs e)
         {
-            DialogResult dr = MessageBox.Show(String.Format("Version v{0} is available for download. Would you like to update?", e.Version),
-                "Update Available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (dr == System.Windows.Forms.DialogResult.Yes)
+            this.BeginInvoke(new Action(() =>
             {
-                UpdateChecker.InitLatestDownload();
-            }
+                showMainForm();
+                DialogResult dr = MessageBox.Show(this, String.Format("Version v{0} is available for download. Would you like to update?", e.Version),
+                    "Shrew VPN Reconnect - Update Available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dr == System.Windows.Forms.DialogResult.Yes)
+                {
+                    UpdateChecker.InitLatestDownload();
+                }
+            }));
         }
 
         private void aboutButton_Click(object sender, EventArgs e)
@@ -65,6 +65,11 @@ namespace com.waldron.shrewReconnect
         }
 
         private void ConnectButton_Click(object sender, EventArgs e)
+        {
+            connect();
+        }
+
+        private void connect()
         {
             if (String.IsNullOrWhiteSpace(this.usernameTextBox.Text)
                 || String.IsNullOrWhiteSpace(this.passwordTextBox.Text)
@@ -82,6 +87,7 @@ namespace com.waldron.shrewReconnect
             credentials.username = this.usernameTextBox.Text;
             credentials.password = this.passwordTextBox.Text;
             credentials.siteConfigPath = this.siteConfigTextBox.Text;
+            credentials.connectOnStart = this.checkboxConnectOnStart.Checked;
             connection = new ShrewConnection(credentials);
             if (checkBoxSave.Checked)
             {
@@ -167,10 +173,15 @@ namespace com.waldron.shrewReconnect
             }));
         }
 
-        private void TrayIcon_DoubleClick(object sender, EventArgs e)
+        private void showMainForm()
         {
             this.Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void TrayIcon_DoubleClick(object sender, EventArgs e)
+        {
+            showMainForm();
         }
 
         private void showHideButton_Click(object sender, EventArgs e)
@@ -200,6 +211,14 @@ namespace com.waldron.shrewReconnect
         {
             UpdateChecker.CheckForUpdate();
         }
-      
+
+        private void checkBoxSave_CheckedChanged(object sender, EventArgs e)
+        {
+            checkboxConnectOnStart.Enabled = checkBoxSave.Checked;
+            if (!checkBoxSave.Checked)
+            {
+                checkboxConnectOnStart.Checked = false;
+            }
+        }
     }
 }

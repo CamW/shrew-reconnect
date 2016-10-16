@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 
 namespace com.waldron.shrewReconnect
@@ -17,6 +11,12 @@ namespace com.waldron.shrewReconnect
         {
             InitializeComponent();
             versionLabel.Text = "v " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+#if X86
+            getLatestLink.Text = "http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest32.msi";
+#endif
+#if X64
+            getLatestLink.Text = "http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi";
+#endif
         }
 
         private void getLatestLink_Click(object sender, EventArgs e)

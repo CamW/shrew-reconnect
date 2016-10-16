@@ -1,17 +1,8 @@
 ﻿using com.waldron.shrewReconnect.Shrew;
-using com.waldron.shrewReconnect.Util;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Net.NetworkInformation;
-using System.Runtime.InteropServices;
-using System.Security;
-using System.ServiceProcess;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace com.waldron.shrewReconnect
 {
@@ -96,11 +87,14 @@ namespace com.waldron.shrewReconnect
         }
 
         private void RunMonitorProcess(object state){
-            if (!VerifyConnected())
+            lock (this)
             {
-                ShrewNotifier.Log("Shrew connection lost!", ShrewConnectionStatus.Disconnected);
-                ShrewNotifier.SetStatus(ShrewConnectionStatus.Pending);
-                Connect();
+                if (!VerifyConnected())
+                {
+                    ShrewNotifier.Log("Shrew connection lost!", ShrewConnectionStatus.Disconnected);
+                    ShrewNotifier.SetStatus(ShrewConnectionStatus.Pending);
+                    Connect();
+                }
             }
         }
 

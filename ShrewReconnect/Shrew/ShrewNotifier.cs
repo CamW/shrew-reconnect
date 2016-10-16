@@ -1,18 +1,14 @@
-﻿using com.waldron.shrewReconnect.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 
 namespace com.waldron.shrewReconnect.Shrew
 {
     public static class ShrewNotifier
     {
         public static event OperationLoggedHandler OperationLogged;
-        public delegate void OperationLoggedHandler(Object o, OperationLogArgs e);
+        public delegate void OperationLoggedHandler(Object sender, OperationLogArgs e);
 
         public static event ConnectionStatusChangedHandler ConnectionStatusChanged;
-        public delegate void ConnectionStatusChangedHandler(Object o, ShrewConnectionStatusArgs e);
+        public delegate void ConnectionStatusChangedHandler(Object sender, ShrewConnectionStatusArgs e);
 
         private static DateTime lastLogDate = DateTime.Now.AddDays(-1);
 

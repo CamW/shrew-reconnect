@@ -31,7 +31,7 @@ shrew-reconnect is not a stand alone VPN client. You need the original Shrew Sof
 * Connect timeout, monitor interval and retry interval settings are not user configurable.
 
 #### Using shrew-reconnect
-#####Installation
+##### Installation
 There is a prebuilt MSI installer available from http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi (64-bit) or http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest32.msi (32-bit). or you can download the source, build it, build the MSI and install that.
 
 ##### Running

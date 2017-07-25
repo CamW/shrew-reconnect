@@ -20,6 +20,13 @@ namespace com.waldron.shrewReconnect
 
             ServiceController sc = new ServiceController(daemonName);
 
+            try
+            {
+                var scName = sc.ServiceName;
+            } catch (InvalidOperationException exc) {
+                throw new InvalidOperationException(String.Format("Service \"{0}\" does not exist or is not available.", daemonName), exc);
+            }
+
             switch (sc.Status)
             {
                 case ServiceControllerStatus.Running:

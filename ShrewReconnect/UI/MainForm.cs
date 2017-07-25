@@ -12,10 +12,15 @@ namespace com.waldron.shrewReconnect
 
         public MainForm()
         {
+            InitializeComponent();
+        }
+
+        override
+        protected void OnLoad(EventArgs e)
+        {
             ShrewNotifier.OperationLogged += notifications_OperationLogged;
             ShrewNotifier.ConnectionStatusChanged += notifications_ConnectionStatusChanged;
             UpdateChecker.UpdateAvailable += updates_UpdateAvailable;
-            InitializeComponent();
             ShrewCredentials credentials = null;
             try
             {

@@ -37,26 +37,33 @@ namespace com.waldron.shrewReconnect
         }
 
         private void ConnectProcess() {
-            this.failedConnectAttempts = 0;
-            if (!DaemonUtils.checkDaemon(IKE_DAEMON_NAME)) return;
-            if (!DaemonUtils.checkDaemon(IPSEC_DAEMON_NAME)) return;
-            ShrewNotifier.Log("Starting connect attempts.", ShrewConnectionStatus.Pending);
-            while (!this.ConnectAttempt() && !this.shuttingDown)
+            try
+            {
+                this.failedConnectAttempts = 0;
+                if (!DaemonUtils.checkDaemon(IKE_DAEMON_NAME)) return;
+                if (!DaemonUtils.checkDaemon(IPSEC_DAEMON_NAME)) return;
+                ShrewNotifier.Log("Starting connect attempts.", ShrewConnectionStatus.Pending);
+                while (!this.ConnectAttempt() && !this.shuttingDown)
+                {
+                    ShrewNotifier.SetStatus(ShrewConnectionStatus.Disconnected);
+                    failedConnectAttempts++;
+                    if (this.failedConnectAttempts % 10 == 0)
+                    {
+                        ShrewNotifier.Log("Failed 10 connect attempts in a row, restarting daemons.", ShrewConnectionStatus.Pending);
+                        DaemonUtils.ResartService(IKE_DAEMON_NAME);
+                        DaemonUtils.ResartService(IPSEC_DAEMON_NAME);
+                    }
+                    ShrewNotifier.Log(string.Format("Connect attempt {0} failed!", failedConnectAttempts), ShrewConnectionStatus.Disconnected);
+                }
+                if (this.shuttingDown) return;
+                ShrewNotifier.SetStatus(ShrewConnectionStatus.Connected);
+                ShrewNotifier.Log("Connection established.", ShrewConnectionStatus.Connected);
+                ShrewNotifier.Log("------------------------------------------------", ShrewConnectionStatus.Pending);
+            }catch (Exception exc)
             {
                 ShrewNotifier.SetStatus(ShrewConnectionStatus.Disconnected);
-                failedConnectAttempts++;
-                if (this.failedConnectAttempts % 10 == 0)
-                {
-                    ShrewNotifier.Log("Failed 10 connect attempts in a row, restarting daemons.", ShrewConnectionStatus.Pending);
-                    DaemonUtils.ResartService(IKE_DAEMON_NAME);
-                    DaemonUtils.ResartService(IPSEC_DAEMON_NAME);
-                }
-                ShrewNotifier.Log(string.Format("Connect attempt {0} failed!", failedConnectAttempts), ShrewConnectionStatus.Disconnected);
+                ShrewNotifier.Log(string.Format("Error while trying to connect: {0}\r\n\r\n {1}", exc.Message, exc.StackTrace), ShrewConnectionStatus.Disconnected);
             }
-            if (this.shuttingDown) return;
-            ShrewNotifier.SetStatus(ShrewConnectionStatus.Connected);
-            ShrewNotifier.Log("Connection established.", ShrewConnectionStatus.Connected);
-            ShrewNotifier.Log("------------------------------------------------", ShrewConnectionStatus.Pending);
         }
 
         private bool ConnectAttempt() {

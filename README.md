@@ -1,6 +1,6 @@
 # shrew-reconnect
 Manages Shrew Soft VPN client and connection. Reconnects when the connection is dropped.
-######Download installer from: http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi
+###### Download installer from: http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi
 
 ![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/open.png)
 ![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/connected.PNG)
@@ -21,9 +21,9 @@ shrew-reconnect is not a stand alone VPN client. You need the original Shrew Sof
 * Tray icon shows the VPN status with different icon background colors.
     * Green: VPN is connected.
     * Yellow: One of the following:
-        * VPN has not been connected by the user.
-        * VPN has been disconnected by the user.
-        * VPN has been disconnected but is in the process of reconnecting for the 1st time since the disconnect.
+      * VPN has not been connected by the user.
+      * VPN has been disconnected by the user.
+      * VPN has been disconnected but is in the process of reconnecting for the 1st time since the disconnect.
     * Red: VPN Could not connect or failed to reconnect.
 
 #### Limitations / Possible future improvements
@@ -34,10 +34,10 @@ shrew-reconnect is not a stand alone VPN client. You need the original Shrew Sof
 #####Installation
 There is a prebuilt MSI installer available from http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi (64-bit) or http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest32.msi (32-bit). or you can download the source, build it, build the MSI and install that.
 
-#####Running
+##### Running
 Once installed, there will be a "Shrew VPN Reconnect" icon on your desktop. Double click that to open. You'll notice, if you have UAC enabled, that it required administrative privileges. This is because it checks to see that the Shrew Soft VPN windows services are running and starts them if they are not. It will also restart them after 10 failed connect attempts as they do seem to get stuck in bad states from time to time.
 
-#####Connecting
+##### Connecting
 Before connecting with shrew-reconnect you will first need to setup the connection in the Shrew Soft VPN Access Manager as you usually would.
 
 Once you've opened shrew-reconnect. Type the name of the VPN you'd like to connect to as it appears in the Shrew Soft VPN Access Manager into the "Site Config Path" field. Type in your VPN username and password into the available fields. If you'd like these encrypted and saved for next time, click the "Encrypt..." checkbox.

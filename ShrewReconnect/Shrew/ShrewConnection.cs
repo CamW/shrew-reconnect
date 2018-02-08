@@ -9,7 +9,7 @@ namespace com.waldron.shrewReconnect
     public class ShrewConnection
     {
         private const int CONNECT_TIMEOUT_MS = 15000; //15 secs
-        private const int MONITOR_INTERVAL_MS = 18000; //18 secs
+        private const int MONITOR_INTERVAL_MS = 2000; //2 secs
         private const int RETRY_INTERVAL_MS = 60000; //1 min
         private const int WAIT_INTERVAL_MS = 1000; //1 sec
 

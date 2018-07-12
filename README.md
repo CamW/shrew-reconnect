@@ -1,3 +1,6 @@
+### EOL notice
+Please note that I will no longer be maintaining this project. As it stands, the application achieves the original requirements. Thanks to those that contributed issues, code and to the users. I've noticed the usage of the application decline, I'm also no longer using it myself. the shrew client itself hasn't been maintained for about 5 years now.
+
 # shrew-reconnect
 Manages Shrew Soft VPN client and connection. Reconnects when the connection is dropped.
 ###### Download installer from: https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest64.msi
@@ -26,9 +29,8 @@ shrew-reconnect is not a stand alone VPN client. You need the original Shrew Sof
       * VPN has been disconnected but is in the process of reconnecting for the 1st time since the disconnect.
     * Red: VPN Could not connect or failed to reconnect.
 
-#### Limitations / Possible future improvements
+#### Limitations
 * The app requires that the original Shrew Soft VPN client be installed at the default C:\Program Files\ShrewSoft\VPN Client\ipsecc.exe location - may be externalized as a setting later.
-* Connect timeout, monitor interval and retry interval settings are not user configurable.
 
 #### Using shrew-reconnect
 ##### Installation
@@ -39,6 +41,7 @@ Once installed, there will be a "Shrew VPN Reconnect" icon on your desktop. Doub
 
 ##### Connecting
 Before connecting with shrew-reconnect you will first need to setup the connection in the Shrew Soft VPN Access Manager as you usually would.
+Please note, Shrew reconnect needs administrative privileges to run. It therefore will ask for admin credentials if the user you run it under is not an administrator. It will look for the .vpn file in the roaming folder of the used administrative user. If you elevate from a limited account, this won't be the current user. This can be confusing since Shrew does store it's .vpn in the current user. You need to either copy the .vpn to the administrative user, or (quite probably, but untested) do the configuration of Shrew elevated as well.
 
 Once you've opened shrew-reconnect. Type the name of the VPN you'd like to connect to as it appears in the Shrew Soft VPN Access Manager into the "Site Config Path" field. Type in your VPN username and password into the available fields. If you'd like these encrypted and saved for next time, click the "Encrypt..." checkbox.
 Click the connect button.

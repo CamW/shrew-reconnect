@@ -10,7 +10,7 @@ namespace com.waldron.shrewReconnect.Util
 {
     public static class UpdateChecker
     {
-        private static string VERSION_URL = "http://www.waldron.co.za/downloads/versions/ShrewReconnect?uid={0}&ver={1}&arch={2}";
+        private static string VERSION_URL = "https://www.waldron.co.za/downloads/versions/ShrewReconnect?uid={0}&ver={1}&arch={2}";
 #if X64
         private static string DOWNLOAD_URL = "https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest64.msi";
 #endif
@@ -53,6 +53,8 @@ namespace com.waldron.shrewReconnect.Util
         {
             try
             {
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+
                 ShrewProperties properties = ShrewConfiguration.LoadProperties();
 
                 Version localVersion = Assembly.GetExecutingAssembly().GetName().Version;                   

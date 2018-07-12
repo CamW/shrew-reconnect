@@ -12,10 +12,10 @@ namespace com.waldron.shrewReconnect
             InitializeComponent();
             versionLabel.Text = "v " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 #if X86
-            getLatestLink.Text = "http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest32.msi";
+            getLatestLink.Text = "https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest32.msi";
 #endif
 #if X64
-            getLatestLink.Text = "http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi";
+            getLatestLink.Text = "https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest64.msi";
 #endif
         }
 

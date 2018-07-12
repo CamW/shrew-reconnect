@@ -48,6 +48,7 @@ namespace com.waldron.shrewReconnect
             {
                 this.checkBoxSave.Checked = false;
             }
+            base.OnLoad(e);
         }
 
         private void updates_UpdateAvailable(object o, UpdateAvailableArgs e)

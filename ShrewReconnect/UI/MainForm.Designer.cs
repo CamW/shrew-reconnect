@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.connectPanel = new System.Windows.Forms.Panel();
+            this.checkBoxVerifyByDomain = new System.Windows.Forms.CheckBox();
             this.checkboxConnectOnStart = new System.Windows.Forms.CheckBox();
             this.checkBoxSave = new System.Windows.Forms.CheckBox();
             this.aboutButton = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.showHideButton = new System.Windows.Forms.Button();
             this.disconnectButton = new System.Windows.Forms.Button();
             this.statusTextBox = new System.Windows.Forms.TextBox();
-            this.checkBoxVerifyByDomain = new System.Windows.Forms.CheckBox();
             this.connectPanel.SuspendLayout();
             this.statusPanel.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +76,16 @@
             this.connectPanel.Name = "connectPanel";
             this.connectPanel.Size = new System.Drawing.Size(467, 229);
             this.connectPanel.TabIndex = 7;
+            // 
+            // checkBoxVerifyByDomain
+            // 
+            this.checkBoxVerifyByDomain.AutoSize = true;
+            this.checkBoxVerifyByDomain.Location = new System.Drawing.Point(98, 168);
+            this.checkBoxVerifyByDomain.Name = "checkBoxVerifyByDomain";
+            this.checkBoxVerifyByDomain.Size = new System.Drawing.Size(159, 17);
+            this.checkBoxVerifyByDomain.TabIndex = 14;
+            this.checkBoxVerifyByDomain.Text = "Verify connection by domain";
+            this.checkBoxVerifyByDomain.UseVisualStyleBackColor = true;
             // 
             // checkboxConnectOnStart
             // 
@@ -226,16 +236,6 @@
             this.statusTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.statusTextBox.Size = new System.Drawing.Size(443, 176);
             this.statusTextBox.TabIndex = 0;
-            // 
-            // checkBoxVerifyByDomain
-            // 
-            this.checkBoxVerifyByDomain.AutoSize = true;
-            this.checkBoxVerifyByDomain.Location = new System.Drawing.Point(98, 168);
-            this.checkBoxVerifyByDomain.Name = "checkBoxVerifyByDomain";
-            this.checkBoxVerifyByDomain.Size = new System.Drawing.Size(159, 17);
-            this.checkBoxVerifyByDomain.TabIndex = 14;
-            this.checkBoxVerifyByDomain.Text = "Verify connection by domain";
-            this.checkBoxVerifyByDomain.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

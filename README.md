@@ -1,6 +1,6 @@
 # shrew-reconnect
 Manages Shrew Soft VPN client and connection. Reconnects when the connection is dropped.
-###### Download installer from: http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi
+###### Download installer from: https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest64.msi
 
 ![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/open.png)
 ![](https://raw.githubusercontent.com/CamW/shrew-reconnect/master/documentation/images/connected.PNG)
@@ -32,7 +32,7 @@ shrew-reconnect is not a stand alone VPN client. You need the original Shrew Sof
 
 #### Using shrew-reconnect
 ##### Installation
-There is a prebuilt MSI installer available from http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi (64-bit) or http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest32.msi (32-bit). or you can download the source, build it, build the MSI and install that.
+There is a prebuilt MSI installer available from https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest64.msi (64-bit) or https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest32.msi (32-bit). or you can download the source, build it, build the MSI and install that.
 
 ##### Running
 Once installed, there will be a "Shrew VPN Reconnect" icon on your desktop. Double click that to open. You'll notice, if you have UAC enabled, that it required administrative privileges. This is because it checks to see that the Shrew Soft VPN windows services are running and starts them if they are not. It will also restart them after 10 failed connect attempts as they do seem to get stuck in bad states from time to time.

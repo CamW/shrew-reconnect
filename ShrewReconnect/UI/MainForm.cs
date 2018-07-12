@@ -36,6 +36,7 @@ namespace com.waldron.shrewReconnect
                 this.passwordTextBox.Text = credentials.password;
                 this.siteConfigTextBox.Text = credentials.siteConfigPath;
                 this.checkboxConnectOnStart.Checked = credentials.connectOnStart;
+                this.checkBoxVerifyByDomain.Checked = credentials.verifyConnectionByDomain;
                 this.checkBoxSave.Checked = true;
                 if (this.checkboxConnectOnStart.Checked)
                 {
@@ -93,6 +94,7 @@ namespace com.waldron.shrewReconnect
             credentials.password = this.passwordTextBox.Text;
             credentials.siteConfigPath = this.siteConfigTextBox.Text;
             credentials.connectOnStart = this.checkboxConnectOnStart.Checked;
+            credentials.verifyConnectionByDomain = checkBoxVerifyByDomain.Checked;
             connection = new ShrewConnection(credentials);
             if (checkBoxSave.Checked)
             {

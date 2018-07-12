@@ -6,6 +6,7 @@
         public string username { get; set; }
         public string password { get; set; }
         public bool connectOnStart { get; set; }
+        public bool verifyConnectionByDomain { get; set; }
 
     }
 }

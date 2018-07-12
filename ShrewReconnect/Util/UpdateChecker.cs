@@ -12,10 +12,10 @@ namespace com.waldron.shrewReconnect.Util
     {
         private static string VERSION_URL = "http://www.waldron.co.za/downloads/versions/ShrewReconnect?uid={0}&ver={1}&arch={2}";
 #if X64
-        private static string DOWNLOAD_URL = "http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest64.msi";
+        private static string DOWNLOAD_URL = "https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest64.msi";
 #endif
 #if X86
-        private static string DOWNLOAD_URL = "http://www.waldron.co.za/downloads/installers/ShrewReconnectLatest32.msi";
+        private static string DOWNLOAD_URL = "https://github.com/CamW/shrew-reconnect/raw/master/installers/ShrewReconnectLatest32.msi";
 #endif
 
         private static long UPDATE_CHECK_INTERVAL_MILLIS = 604800000; //7 days

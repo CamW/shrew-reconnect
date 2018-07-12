@@ -15,18 +15,18 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_12B993F6EE669C9106B59C6A26209A03"
-        "OwnerKey" = "8:_A4E339074C304A2ABE78527DD6BBC7F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A4E339074C304A2ABE78527DD6BBC7F5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_F87CE384C63FED9768907C2206313A3C"
+        "OwnerKey" = "8:_A4E339074C304A2ABE78527DD6BBC7F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A4E339074C304A2ABE78527DD6BBC7F5"
         "MsmSig" = "8:_UNDEFINED"
@@ -34,7 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_12B993F6EE669C9106B59C6A26209A03"
+        "OwnerKey" = "8:_F87CE384C63FED9768907C2206313A3C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -126,6 +126,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -156,13 +164,18 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_12B993F6EE669C9106B59C6A26209A03"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F87CE384C63FED9768907C2206313A3C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_F87CE384C63FED9768907C2206313A3C"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
@@ -238,15 +251,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Shrew VPN Reconnect"
-        "ProductCode" = "8:{E17F0A5D-6C10-435F-9211-ECAB2E76AD3C}"
-        "PackageCode" = "8:{9D454451-3777-40D8-8C53-982808C3051D}"
+        "ProductCode" = "8:{86111CCD-26BB-4AD8-A1C7-4AAAF921D856}"
+        "PackageCode" = "8:{45A67F51-D64A-4E4D-971D-6BF99151C66A}"
         "UpgradeCode" = "8:{AA2C9CC9-E2BE-45E5-9033-CA0FFD03DC8D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.8"
+        "ProductVersion" = "8:1.0.9"
         "Manufacturer" = "8:Cameron Waldron"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/camw/shrew-reconnect"

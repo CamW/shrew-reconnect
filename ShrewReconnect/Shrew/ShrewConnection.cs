@@ -9,7 +9,7 @@ namespace com.waldron.shrewReconnect
     public class ShrewConnection
     {
         private const int CONNECT_TIMEOUT_MS = 15000; //15 secs
-        private const int MONITOR_INTERVAL_MS = 2000; //2 secs
+        private const int MONITOR_INTERVAL_MS = 18000; //18 secs
         private const int RETRY_INTERVAL_MS = 60000; //1 min
         private const int WAIT_INTERVAL_MS = 1000; //1 sec
 
@@ -21,17 +21,17 @@ namespace com.waldron.shrewReconnect
         private int failedConnectAttempts { get; set; }
         private bool shuttingDown { get; set; }
         private ShrewClientService vpnClient { get; set; }
-        private string networkHost { get; set; }
+        private ShrewCredentials credentials { get; set;  }
 
         public ShrewConnection(ShrewCredentials credentials)
         {
             vpnClient = new ShrewClientService(credentials);
-            this.networkHost = GetShrewConfigLine("network-host", credentials.siteConfigPath);
             this.shuttingDown = false;
+            this.credentials = credentials;
             this.failedConnectAttempts = 0;
         }
 
-        public string GetShrewConfigLine(string configLine, string siteConfigPath)
+        public static string GetShrewConfigLine(string configLine, string siteConfigPath)
         {
             string[] lines = System.IO.File.ReadAllLines($@"{Environment.GetEnvironmentVariable("LOCALAPPDATA")}\Shrew Soft VPN\sites\{siteConfigPath}");
             Char delimiter = ':';
@@ -130,23 +130,20 @@ namespace com.waldron.shrewReconnect
         private bool VerifyConnected()
         {
             NetworkInterface[] netInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
-
-            // try to verify connection using domain method
-            foreach (NetworkInterface adapter in netInterfaces)
-            {
-                IPInterfaceProperties adapterProperties = adapter.GetIPProperties();
-                if (adapterProperties.DnsSuffix == this.networkHost)
+            
+            NetworkInterface vpnInterface = netInterfaces.FirstOrDefault(iface =>
                 {
-                    return true;
+                    if (iface.Description.Equals("Shrew Soft Virtual Adapter")) return true;
+                    // try to verify connection using domain method
+                    if (credentials.verifyConnectionByDomain)
+                    {
+                        String networkHost = GetShrewConfigLine("network-host", credentials.siteConfigPath);
+                        IPInterfaceProperties adapterProperties = iface.GetIPProperties();
+                        if (networkHost.Contains(adapterProperties.DnsSuffix) && (adapterProperties.DnsSuffix != "")) return true;
+                    }
+                    return false;
                 }
-                if (this.networkHost.Contains(adapterProperties.DnsSuffix) && (adapterProperties.DnsSuffix != ""))
-                {
-                    return true;
-                }
-            }
-
-            NetworkInterface vpnInterface = netInterfaces.FirstOrDefault(x => x.Description.Equals("Shrew Soft Virtual Adapter"));
+            );
             if (vpnInterface != null)
             {
                 return vpnInterface.OperationalStatus == OperationalStatus.Up;
